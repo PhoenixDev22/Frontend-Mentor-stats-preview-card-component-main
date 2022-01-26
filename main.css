@@ -36,37 +36,40 @@ body{
     width: 100%;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
+    padding: 0 2rem
 }
 main{
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 35.625rem 33.75rem;
-    grid-template-rows: auto;
-    width: 69.375rem;
-    height: 27.875rem;
+    -ms-grid-columns: 35.625rem 33.75rem;
+        grid-template-columns: 35.625rem 33.75rem;
+    -ms-grid-rows:auto;
+        grid-template-rows: auto;
+    max-width: 69.375rem;
     color: var(--white);
     border-radius: 0.8rem;
     overflow: hidden;
     position: relative;
 }
-/* strat styling the info section */
+/* start styling the info section */
 main .info-section{
     grid-column: 1/2;
     background-color: var(--dark-desaturated-blue);
     padding: 3.75rem;
 }
-main .info-section h1{
-    font-size: 38px;
+main .info-section .title {
+    font-size: 2.375rem ;
     line-height: 2.5rem;
     font-weight: 400;
     color: var(--white);
     font-family: 'Lexend Deca', sans-serif;
 }
-main .info-section h1 span{
+main .info-section .title span{
     color: var(--soft-violet)
 }
-main .info-section p{
+main .info-section .description {
     margin: 3rem 0 4rem;
-    font-size: 15px;
+    font-size: 0.9375rem ;
     line-height: 1.6;
     font-family: 'Inter', sans-serif;
     color: var(--lightly-transparent-white);
@@ -76,16 +79,17 @@ main .info-section p{
 main .info-section .stats{
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: flex-start; 
 }
 main .info-section .stats li{
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    margin-right: 3rem ;
 }
 main .info-section .stats .number{
-    font-size:22px;
+    font-size: 1.375rem ;
     font-weight: 700;
     padding: 0.5rem 0;
     font-family: 'Inter', sans-serif;
@@ -93,13 +97,12 @@ main .info-section .stats .number{
 }
 main .info-section .stats .stats-heading{
     color: var(--slightly-transparent-white);
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: 0.75rem ;
+    letter-spacing: 0.0625em ;
     text-transform: uppercase;
 }
 /* start styling the image section  */
 main .image-section{
-    height: auto;
     grid-column: 2/3;
     position: relative;
 }
@@ -130,84 +133,62 @@ main .image-section img{
 /* start styling the attribution */
 .attribution { 
     position: absolute;
-    bottom: 5px;
-    font-size: 13px; 
+    bottom: 0.3125rem ;
+    font-size: 0.8125rem ; 
     text-align: center; 
     color: var(--lightly-transparent-white);
 }
 .attribution a { 
     color: var(--soft-violet); 
 }
+.attribution a:focus-visible{
+    outline: 2px dashed var(--lightly-transparent-white);
+}
 /* ------------------ media query for  screens less than  1195px ----------*/
 @media screen and (max-width: 74.6875rem){
     main{
-        width: 90%;
+        -ms-grid-columns: 51.351%  48.648%;
         grid-template-columns: 51.351%  48.648%;
-        grid-template-rows: auto;
     }
-    main .info-section h1{
-        font-size: 28px;
+    main .info-section .title{
+        font-size: 2rem;
     }
-    main .info-section p {
+    main .info-section .description{
         padding-right: 1rem;
     } 
 }
 /* ------------------ media query for  screens less than  995px ----------*/
 @media screen and (max-width: 62.1875rem){
     main{        
-        width: 70vw;
+        max-width: 37.25rem;
         height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column-reverse;
         flex-wrap: wrap;
-        margin: 50px auto; 
+        margin: 3.125rem  auto; 
     }
     main .image-section{
         width: 100%;
-        max-height:20rem;
-        height:20rem;
-    }
-    main .info-section p {
-        margin: 3rem 0 2rem;
-    } 
-}
-/* ------------------ media query for  screens less than 588px ----------*/
-@media screen and (max-width: 36.75rem){
-    main{
-        width: 20rem;
-    }
-    main .image-section{
-        max-height: 11.25rem;
-    }
-    main .info-section{
-        padding: 2rem ;
-        width: 100%;
-        height: auto;
+        min-height:19rem;
         text-align: center;
     }
-    main .info-section h1{
-        width: 86%;
-        font-size: 20px;
-        line-height: 24px;
-        margin: 0 auto;
+    main .info-section .description {
+        margin: 3rem 0 2rem;
+    } 
+    main .info-section .stats{
+        justify-content: space-between; 
     }
-    main .info-section p {
-        padding: 0 2rem;
-        font-size: 11px;
-        line-height: 1.5;
-        margin: 1rem 0 ;
+}
+/* ------------------ media query for  screens less than 588px ----------*/
+@media screen and (max-width: 562px){
+    main{
+        max-width: 25rem;
     }
-    main .stats{
-        flex-direction:column;
-    }
-    main .info-section .stats li{
-        align-items: center;
-        margin: 0;
-    }
+    /* styles for the image section */
     main .image-section{
-        height:11.25rem;
+        min-height:11.25rem;
     }
     main .image-section .mobile{
         opacity: 1;
@@ -215,7 +196,32 @@ main .image-section img{
     main .image-section .desktop{
         opacity: 0;
     }
+    /* info_section  */
+    main .info-section{
+        padding: 2rem ;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    main .info-section .title{
+        font-size: 1.25rem;
+        line-height: 1.25;
+        padding: 0 0.4rem;
+    }
+    main .info-section .description {
+        padding: 0;
+        font-size: 0.8rem ;
+        line-height: 1.7;
+        margin: 1rem 0 ;
+    }
+    main .stats{
+        flex-direction:column;
+    }
+    main .info-section .stats li{
+        align-items: center;
+        margin: .5rem 0;
+    }
     .attribution {
-        font-size: 11px;
+        font-size: 0.6875rem ;
     }
 }
