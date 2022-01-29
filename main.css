@@ -222,6 +222,6 @@ main .image-section img{
         margin: .5rem 0;
     }
     .attribution {
-        font-size: 0.6875rem ;
+        display: none;
     }
 }
